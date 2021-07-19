@@ -4,12 +4,12 @@ class Contact:
 
     countContactId = 0
 
-    def __init__(self, name, nickname, phone, email, address, preferred):
+    def __init__(self, name, nickname, code, phone, email, address, preferred):
         Contact.countContactId += 1
         self.__contactId = Contact.countContactId
         self.__name = name
         self.__nickname = nickname
-        self.__contactInfo = list((phone, email, address))
+        self.__contactInfo = list((code, phone, email, address))
         self.__preferred = preferred
 
     @property
@@ -55,5 +55,6 @@ class Contact:
         apodo={self.nickname},
         telefono={self.contactInfo[0]},
         email={self.contactInfo[1]},
-        direccion={self.contactInfo[2]},
+        email={self.contactInfo[2]},
+        direccion={self.contactInfo[3]},
         preferido={self.preferred}"""

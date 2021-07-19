@@ -1,6 +1,6 @@
 # Clase de contacto
 
-class Contact():
+class Contact:
 
     countContactId = 0
 

@@ -33,7 +33,7 @@ class Contact:
         self.__nickname = nickname
     
     @property
-    def contactoInfo(self):
+    def contactInfo(self):
         return self.__contactInfo
     
     @contactInfo.setter

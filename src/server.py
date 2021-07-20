@@ -1,17 +1,19 @@
 from Agenda import Agenda
-from flask import Flask
-from flask_restful import Resource, Api
+from flask import Flask, jsonify
 from Grupo import Grupo
+from Contact import Contact
 
 app = Flask(__name__)
 
 nuevaAgenda = Agenda()
 nuevaAgenda.addContacto('Luis')
+
+newContact = Contact('jairo', 'jairo_5', 'programer', 'iso')
 ## []
 
 @app.route("/")
 def home():
-    return {"hola" : nuevaAgenda.contactos}
+    return jsonify(newContact.get)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

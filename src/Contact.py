@@ -4,13 +4,13 @@ class Contact:
 
     countContactId = 0
 
-    def __init__(self, name, nickname, contactInfo, preferred):
+    def __init__(self, name, nickname, code, phone, email, address, preferred):
         Contact.countContactId += 1
-        self.__contactId = Contact.countContactId
-        self.__name = name
-        self.__nickname = nickname
-        self.__contactInfo = contactInfo
-        self.__preferred = preferred
+        self.__contactId= Contact.countContactId
+        self.__name= name
+        self.__nickname= nickname
+        self.__contactInfo= list((code, phone, email, address))
+        self.__preferred= preferred
 
     @property
     def contactId(self):
@@ -19,31 +19,55 @@ class Contact:
     @property
     def name(self):
         return self.__name
-    
+
     @name.setter
     def name(self, name):
         self.__name = name
-    
+
     @property
     def nickname(self):
         return self.__nickname
-    
+
     @nickname.setter
     def nickname(self, nickname):
         self.__nickname = nickname
-    
+
     @property
     def contactInfo(self):
         return self.__contactInfo
-    
+
     @contactInfo.setter
     def contactInfo(self, contactInfo):
         self.__contactInfo = contactInfo
-    
+
     @property
     def preferred(self):
         return self.__preferred
-    
+
     @preferred.setter
-    def prefered(self, preferred):
-        self.__preferred = preferred
+    def preferred(self, preferred):
+        self.preferred = preferred
+
+    def __str__(self):
+        return f"""
+        Contacto: idContacto={self.contactId},
+        nombre={self.name},
+        apodo={self.nickname},
+        telefono={self.contactInfo[0]},
+        email={self.contactInfo[1]},
+        email={self.contactInfo[2]},
+        direccion={self.contactInfo[3]},
+        preferido={self.preferred}
+        """
+    def converData(self):
+        return {
+            "name": self.__name,
+            "contactId": self.__contactId,
+            "nickname": self.__nickname,
+            "contactInfo": self.__contactInfo,
+            "preferred": self.__preferred
+        }
+
+if __name__ == "__main__":
+    contacto1 = Contact("Juan Diaz", "Juan", 57, 123456, "juan@mail.com", "cra78", True)
+    print(contacto1)

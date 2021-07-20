@@ -8,12 +8,19 @@ class Agenda:
 	def agregarContacto(self, contacto):
 		self.contactos.append(contacto)
 
+	def borrarContacto(self, id):
+		for contacto in self.contactos:
+			if contacto.contactId == id:
+				self.contactos.remove(contacto)
+				print("Se ha eliminado el contacto")
+				break
+
 	def buscarContacto(self, buscar):
-		for contacto in contactos:
+		for contacto in self.contactos:
 			if contacto.nickname == buscar:
-				return contacto
+				return f"Resultado de la busqueda: {contacto}"
 			else:
-				print ("No se encuentra el contacto solicitado")
+				return "No se encontró el contacto solicitado"
 
 	def __str__(self):
 		agenda_str = ""
@@ -29,4 +36,6 @@ if __name__ == "__main__":
 	agenda1.agregarContacto(contacto1)
 	agenda1.agregarContacto(contacto2)
 	agenda1.agregarContacto(contacto3)
+	print(agenda1)
+	agenda1.borrarContacto(1)
 	print(agenda1)

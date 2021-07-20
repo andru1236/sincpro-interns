@@ -16,7 +16,10 @@ class Agenda:
 				print ("No se encuentra el contacto solicitado")
 
 	def __str__(self):
-	 return f"""Agenda: {contacto1}"""
+		agenda_str = ""
+		for contacto in self.contactos:
+			agenda_str += contacto.__str__()
+		return agenda_str
 
 if __name__ == "__main__":
 	contacto1 = Contact("Juan Diaz", "Juan", 57, 123456, "juan@mail.com", "cra78", True)

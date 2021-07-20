@@ -1,19 +1,43 @@
-from Agenda import Agenda
-from flask import Flask, jsonify
-from Grupo import Grupo
+from flask import Flask, jsonify, request
 from Contact import Contact
+import json
+
+from Agenda import Agenda
 
 app = Flask(__name__)
 
-nuevaAgenda = Agenda()
-nuevaAgenda.addContacto('Luis')
+agenda1 = Agenda()
 
-newContact = Contact('jairo', 'jairo_5', 'programer', 'iso')
-## []
+contacto3 = Contact("Juan Diaz", "Juan", 57, 123456, "juan@mail.com", "cra78", True)
+data = contacto3.converData()
 
-@app.route("/")
-def home():
-    return jsonify(newContact.get)
+agenda1.agregarContacto(data)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+@app.route('/user')
+def getContacts():
+    return jsonify({
+        "Data": [agenda1.contactos]
+    })
+
+@app.route('/user/<string:atributo>', methods=['GET'])
+def getContact(atributo):
+    found = [item for item in agenda1.contactos if item['nickname'] == atributo]
+    if(len(found) > 0):
+        return jsonify(found)
+    return jsonify({"mensaje": "not found"})
+
+@app.route('/user', methods=['POST'])
+def createContact():
+    newContact = {
+        "id": request.json['contactId'],
+        "contactInfo": request.json['contactInfo'],
+        "name": request.json['name'],
+        "nickname": request.json['nickname'],
+        "preferred": request.json['preferred']
+    }
+    agenda1.agregarContacto(newContact)
+
+    return jsonify(agenda1.contactos)
+
+if __name__ == "__main__":
+    app.run(debug=True)

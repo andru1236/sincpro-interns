@@ -42,7 +42,7 @@ class Contact:
 
     @property
     def preferred(self):
-        return self.preferred
+        return self.__preferred
 
     @preferred.setter
     def preferred(self, preferred):
@@ -57,4 +57,10 @@ class Contact:
         email={self.contactInfo[1]},
         email={self.contactInfo[2]},
         direccion={self.contactInfo[3]},
-        preferido={self.preferred}"""
+        preferido={self.preferred}
+        """
+
+
+if __name__ == "__main__":
+    contacto1 = Contact("Juan Diaz", "Juan", 57, 123456, "juan@mail.com", "cra78", True)
+    print(contacto1)

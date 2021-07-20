@@ -1,13 +1,29 @@
+# Clase agenda
+from Contact import Contact
 
 class Agenda:
+
 	contactos = []
 
-	def addContacto(self, a):
-		self.contactos.append(a)
+	def agregarContacto(self, contacto):
+		self.contactos.append(contacto)
 
-	def buscarContacto(self, a):
+	def buscarContacto(self, buscar):
 		for contacto in contactos:
-			if contacto.getPreferredInfo() == a and contactos.len() > 0:
+			if contacto.nickname == buscar:
 				return contacto
 			else:
-				print ("No es posible buscar el contacto solicitado")
+				print ("No se encuentra el contacto solicitado")
+
+	def __str__(self):
+	 return f"""Agenda: {contacto1}"""
+
+if __name__ == "__main__":
+	contacto1 = Contact("Juan Diaz", "Juan", 57, 123456, "juan@mail.com", "cra78", True)
+	contacto2 = Contact("Juan Diaz", "Juan", 57, 123456, "juan@mail.com", "cra78", True)
+	contacto3 = Contact("Juan Diaz", "Juan", 57, 123456, "juan@mail.com", "cra78", True)
+	agenda1 = Agenda()
+	agenda1.agregarContacto(contacto1)
+	agenda1.agregarContacto(contacto2)
+	agenda1.agregarContacto(contacto3)
+	print(agenda1)

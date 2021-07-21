@@ -3,10 +3,10 @@ class Agenda:
 
 	contactos = []
 
-	def addContact(self, a):
+	def add_contact(self, a):
 		self.contactos.append(a)
 	
-	def DeleteContact(self, id):
+	def delete_contact(self, id):
 			DeleteContact = [contact for contact in self.contactos if contact['id'] == int(id)]
 			if len(DeleteContact) > 0:
 				self.contactos.remove(DeleteContact[0])
@@ -14,11 +14,10 @@ class Agenda:
 			else:
 				return {"messaje": "Contact not found"}
 
-	def findContact(self, from Contact import Contacta):
+	def find_contact(self, a):
 			found = [item for item in self.contactos if item['id'] == int(a)]
 			if(len(found) > 0):
 				return found
 			else: 
-				print(type(a))
 				return {"mensaje": "not found"}
 

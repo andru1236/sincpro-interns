@@ -59,7 +59,7 @@ class Contact:
         direccion={self.contactInfo[3]},
         preferido={self.preferred}
         """
-    def converData(self):
+    def conver_data(self):
         return {
             "name": self.__name,
             "id": self.__contactId,
@@ -68,6 +68,4 @@ class Contact:
             "preferred": self.__preferred
         }
 
-if __name__ == "__main__":
-    contacto1 = Contact("Juan Diaz", "Juan", 57, 123456, "juan@mail.com", "cra78", True)
-    print(contacto1)
+# contacto1 = Contact("Juan Diaz", "Juan", 57, 123456, "juan@mail.com", "cra78", True)

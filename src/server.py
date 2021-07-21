@@ -3,13 +3,7 @@ from Contact import Contact
 from Agenda import Agenda
 
 app = Flask(__name__)
-
 agenda1 = Agenda()
-
-contacto3 = Contact("Juan Diaz", "Juan", 57, 123456, "juan@mail.com", "cra78", True)
-data = contacto3.conver_data()
-
-agenda1.add_contact(data)
 
 @app.route('/user')
 def get_contacts():
@@ -31,7 +25,11 @@ def create_contact():
         "nickname": request.json['nickname'],
         "preferred": request.json['preferred']
     }
-    agenda1.add_contact(newContact)
+
+    contacto3 = Contact(newContact['name'], newContact['nickname'], newContact['contactInfo'][0], newContact['contactInfo'][1], newContact['contactInfo'][2], newContact['contactInfo'][3], newContact['preferred'])
+    data = contacto3.conver_data()
+    print(newContact['contactInfo'][0])
+    agenda1.add_contact(data)
 
     return jsonify(agenda1.contactos)
 
@@ -39,7 +37,6 @@ def create_contact():
 def delete_products(id):
     contactDelete = agenda1.delete_contact(id)
     return jsonify(contactDelete)
-
 
 @app.route('/user/<string:id>', methods=['PUT'])
 def edit_contacts(id):
@@ -49,7 +46,7 @@ def edit_contacts(id):
         foundContact[0]['preferred'] = request.json['preferred']
         
         return jsonify(foundContact[0])
-    
 
 if __name__ == "__main__":
     app.run(debug=True)
+

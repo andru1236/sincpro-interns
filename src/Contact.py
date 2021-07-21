@@ -66,3 +66,4 @@ class Contact:
             "contactInfo": self.__contactInfo,
             "preferred": self.__preferred
         }
+        

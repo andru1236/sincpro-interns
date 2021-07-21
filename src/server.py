@@ -25,7 +25,7 @@ def get_contact(atributo):
 @app.route('/user', methods=['POST'])
 def create_contact():
     newContact = {
-        "id": request.json['contactId'],
+        "id": len(agenda1.contactos) + 1,
         "contactInfo": request.json['contactInfo'],
         "name": request.json['name'],
         "nickname": request.json['nickname'],

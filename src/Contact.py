@@ -1,5 +1,3 @@
-# Clase de contacto
-
 class Contact:
 
     countContactId = 0

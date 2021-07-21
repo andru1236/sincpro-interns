@@ -1,7 +1,5 @@
 from flask import Flask, jsonify, request
 from Contact import Contact
-import json
-
 from Agenda import Agenda
 
 app = Flask(__name__)
@@ -11,7 +9,7 @@ agenda1 = Agenda()
 contacto3 = Contact("Juan Diaz", "Juan", 57, 123456, "juan@mail.com", "cra78", True)
 data = contacto3.converData()
 
-agenda1.agregarContacto(data)
+agenda1.addContact(data)
 
 @app.route('/user')
 def getContacts():
@@ -21,10 +19,8 @@ def getContacts():
 
 @app.route('/user/<string:atributo>', methods=['GET'])
 def getContact(atributo):
-    found = [item for item in agenda1.contactos if item['nickname'] == atributo]
-    if(len(found) > 0):
-        return jsonify(found)
-    return jsonify({"mensaje": "not found"})
+    foundContact = agenda1.findContact(atributo)
+    return jsonify(foundContact) 
 
 @app.route('/user', methods=['POST'])
 def createContact():
@@ -35,9 +31,15 @@ def createContact():
         "nickname": request.json['nickname'],
         "preferred": request.json['preferred']
     }
-    agenda1.agregarContacto(newContact)
+    agenda1.addContact(newContact)
 
     return jsonify(agenda1.contactos)
+
+@app.route('/user/<string:id>', methods=['DELETE'])
+def deleteProduct(id):
+    contactDelete = agenda1.DeleteContact(id)
+    return jsonify(contactDelete)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -6,11 +6,11 @@ class Contact:
 
     def __init__(self, name, nickname, code, phone, email, address, preferred):
         Contact.countContactId += 1
-        self.__contactId= Contact.countContactId
-        self.__name= name
-        self.__nickname= nickname
-        self.__contactInfo= list((code, phone, email, address))
-        self.__preferred= preferred
+        self.__contactId = Contact.countContactId
+        self.__name = name
+        self.__nickname = nickname
+        self.__contactInfo = list((code, phone, email, address))
+        self.__preferred = preferred
 
     @property
     def contactId(self):

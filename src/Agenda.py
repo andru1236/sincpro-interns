@@ -1,6 +1,6 @@
 
-
 class Agenda:
+
 	contactos = []
 
 	def addContact(self, a):
@@ -14,7 +14,7 @@ class Agenda:
 			else:
 				return {"messaje": "Contact not found"}
 
-	def findContact(self, a):
+	def findContact(self, from Contact import Contacta):
 			found = [item for item in self.contactos if item['id'] == int(a)]
 			if(len(found) > 0):
 				return found

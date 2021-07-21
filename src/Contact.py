@@ -62,7 +62,7 @@ class Contact:
     def converData(self):
         return {
             "name": self.__name,
-            "contactId": self.__contactId,
+            "id": self.__contactId,
             "nickname": self.__nickname,
             "contactInfo": self.__contactInfo,
             "preferred": self.__preferred

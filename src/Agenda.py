@@ -1,41 +1,21 @@
-# Clase agenda
-from Contact import Contact
 
 class Agenda:
 
 	contactos = []
 
-	def agregarContacto(self, contacto):
-		self.contactos.append(contacto)
+	def add_contact(self, a):
+		self.contactos.append(a)
+	
+	def delete_contact(self, id):
+			delete_contact = [contact for contact in self.contactos if contact['id'] == int(id)]
+			if len(delete_contact) > 0:
+				self.contactos.remove(delete_contact[0])
+				return delete_contact
+			return {"messaje": "Contact not found"}
 
-	def borrarContacto(self, id):
-		for contacto in self.contactos:
-			if contacto.contactId == id:
-				self.contactos.remove(contacto)
-				print("Se ha eliminado el contacto")
-				break
+	def find_contact(self, a):
+			found = [item for item in self.contactos if item['id'] == int(a)]
+			if(len(found) > 0):
+				return found
+			return {"mensaje": "not found"}
 
-	def buscarContacto(self, buscar):
-		for contacto in self.contactos:
-			if contacto.nickname == buscar:
-				return f"Resultado de la busqueda: {contacto}"
-			else:
-				return "No se encontró el contacto solicitado"
-
-	def __str__(self):
-		agenda_str = ""
-		for contacto in self.contactos:
-			agenda_str += contacto.__str__()
-		return agenda_str
-
-if __name__ == "__main__":
-	contacto1 = Contact("Juan Diaz", "Juan", 57, 123456, "juan@mail.com", "cra78", True)
-	contacto2 = Contact("Carlos Perez", "Charles", 591, 123456, "carlos@mail.com", "cra78", True)
-	contacto3 = Contact("Leidy Martinez", "Lady", 52, 123456, "leidy@mail.com", "cra78", False)
-	agenda1 = Agenda()
-	agenda1.agregarContacto(contacto1)
-	agenda1.agregarContacto(contacto2)
-	agenda1.agregarContacto(contacto3)
-	print(agenda1)
-	agenda1.borrarContacto(1)
-	print(agenda1)

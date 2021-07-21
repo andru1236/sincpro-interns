@@ -48,8 +48,7 @@ class Contact:
     def preferred(self, preferred):
         self.preferred = preferred
 
-    def __str__(self):
-        return f"""
+
         Contacto: idContacto={self.contactId},
         nombre={self.name},
         apodo={self.nickname},
@@ -58,9 +57,14 @@ class Contact:
         email={self.contactInfo[2]},
         direccion={self.contactInfo[3]},
         preferido={self.preferred}
-        """
+        
+    def conver_data(self):
+        return {
+            "name": self.__name,
+            "id": self.__contactId,
+            "nickname": self.__nickname,
+            "contactInfo": self.__contactInfo,
+            "preferred": self.__preferred
+        }
 
-
-if __name__ == "__main__":
-    contacto1 = Contact("Juan Diaz", "Juan", 57, 123456, "juan@mail.com", "cra78", True)
-    print(contacto1)
+        

@@ -1,12 +1,24 @@
+
+
 class Agenda:
 	contactos = []
 
-	def addContacto(self, a):
+	def addContact(self, a):
 		self.contactos.append(a)
-
-	def buscarContacto(self, a):
-		for contacto in contactos:
-			if contacto.getPreferredInfo() == a and contactos.len() > 0:
-				return contacto
+	
+	def DeleteContact(self, id):
+			DeleteContact = [contact for contact in self.contactos if contact['id'] == int(id)]
+			if len(DeleteContact) > 0:
+				self.contactos.remove(DeleteContact[0])
+				return DeleteContact
 			else:
-				print ("No es posible buscar el contacto solicitado")
+				return {"messaje": "Contact not found"}
+
+	def findContact(self, a):
+			found = [item for item in self.contactos if item['id'] == int(a)]
+			if(len(found) > 0):
+				return found
+			else: 
+				print(type(a))
+				return {"mensaje": "not found"}
+

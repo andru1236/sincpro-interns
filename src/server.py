@@ -3,49 +3,48 @@ from Contact import Contact
 from Agenda import Agenda
 
 app = Flask(__name__)
-agenda1 = Agenda()
+agenda = Agenda()
 
 @app.route('/user')
 def get_contacts():
     return jsonify({
-        "Data": [agenda1.contactos]
+        "Data": [agenda.contactos]
     })
 
 @app.route('/user/<string:atributo>', methods=['GET'])
 def get_contact(atributo):
-    foundContact = agenda1.find_contact(atributo)
-    return jsonify(foundContact) 
+    found_contact = agenda.find_contact(atributo)
+    return jsonify(found_contact) 
 
 @app.route('/user', methods=['POST'])
 def create_contact():
-    newContact = {
-        "id": len(agenda1.contactos) + 1,
+    new_contact = {
+        "id": len(agenda.contactos) + 1,
         "contactInfo": request.json['contactInfo'],
         "name": request.json['name'],
         "nickname": request.json['nickname'],
         "preferred": request.json['preferred']
     }
 
-    contacto3 = Contact(newContact['name'], newContact['nickname'], newContact['contactInfo'][0], newContact['contactInfo'][1], newContact['contactInfo'][2], newContact['contactInfo'][3], newContact['preferred'])
-    data = contacto3.conver_data()
-    print(newContact['contactInfo'][0])
-    agenda1.add_contact(data)
+    contacto = Contact(new_contact['name'], new_contact['nickname'], new_contact['contactInfo'][0], new_contact['contactInfo'][1], new_contact['contactInfo'][2], new_contact['contactInfo'][3], new_contact['preferred'])
+    data = contacto.conver_data()
+    agenda.add_contact(data)
 
-    return jsonify(agenda1.contactos)
+    return jsonify(agenda.contactos)
 
 @app.route('/user/<string:id>', methods=['DELETE'])
 def delete_products(id):
-    contactDelete = agenda1.delete_contact(id)
-    return jsonify(contactDelete)
+    contact_delete = agenda.delete_contact(id)
+    return jsonify(contact_delete)
 
 @app.route('/user/<string:id>', methods=['PUT'])
 def edit_contacts(id):
-        foundContact = agenda1.find_contact(id)
-        foundContact[0]['name'] = request.json['name']
-        foundContact[0]['nickname'] = request.json['nickname']
-        foundContact[0]['preferred'] = request.json['preferred']
+        found_contact = agenda.find_contact(id)
+        found_contact[0]['name'] = request.json['name']
+        found_contact[0]['nickname'] = request.json['nickname']
+        found_contact[0]['preferred'] = request.json['preferred']
         
-        return jsonify(foundContact[0])
+        return jsonify(found_contact[0])
 
 if __name__ == "__main__":
     app.run(debug=True)

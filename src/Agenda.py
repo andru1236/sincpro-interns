@@ -14,8 +14,7 @@ class Agenda:
 			return {"messaje": "Contact not found"}
 
 	def find_contact(self, a):
-			found = [item for item in self.contactos if item['id'] == int(a)]
-			if(len(found) > 0):
-				return found
+			if(len(self.contactos) > 0):
+				return self.contactos[int(a)-1]
 			return {"mensaje": "not found"}
 

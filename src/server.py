@@ -7,14 +7,31 @@ agenda = Agenda()
 
 @app.route('/user')
 def get_contacts():
+    atribute = request.args.get('info')
+
+    def get_contact(x):
+        for item in agenda.contactos:
+            for b in item.values():
+                if b == x:
+                    return item
+
+    found_contact_atribute = get_contact(atribute)
+
+    if(len(atribute) == 0):
+        return jsonify({
+            "Data": [agenda.contactos]
+        })
     return jsonify({
-        "Data": [agenda.contactos]
+        "Data": [found_contact_atribute]
     })
+
+    
 
 @app.route('/user/<string:atributo>', methods=['GET'])
 def get_contact(atributo):
     found_contact = agenda.find_contact(atributo)
     return jsonify(found_contact) 
+
 
 @app.route('/user', methods=['POST'])
 def create_contact():

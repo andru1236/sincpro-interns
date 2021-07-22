@@ -1,5 +1,3 @@
-# Clase de contacto
-
 class Contact:
 
     countContactId = 0
@@ -48,8 +46,9 @@ class Contact:
     def preferred(self, preferred):
         self.preferred = preferred
 
-
-        Contacto: idContacto={self.contactId},
+    def __str__(self):
+        f"""Contacto:
+        idContacto={self.contactId},
         nombre={self.name},
         apodo={self.nickname},
         telefono={self.contactInfo[0]},
@@ -57,6 +56,7 @@ class Contact:
         email={self.contactInfo[2]},
         direccion={self.contactInfo[3]},
         preferido={self.preferred}
+        """
         
     def conver_data(self):
         return {

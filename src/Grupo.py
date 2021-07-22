@@ -15,7 +15,7 @@ class Grupo:
                 self.__lista.remove(contacto)
                 return {
                     "message": "Contacto removido del grupo",
-                    "elemento": contacto
+                    "element": contacto
                 }
         return {"message": "El contacto no se encuentra en este grupo"}
 
@@ -30,24 +30,4 @@ FAMILIA = Grupo("Familia")
 AMIGOS = Grupo("Amigos")
 TRABAJO = Grupo("Trabajo")
 
-
-if __name__ == "__main__":
-    contacto1 = Contact("Juan Z", "juan", 57, 123456, "juan@mail.com", "cra78", True)
-    contacto2 = Contact("Carlos P", "carlos", 591, 123456, "carlos@mail.com", "cra78", True)
-    contacto3 = Contact("Leidy G", "lady", 1, 123456, "lady@mail.com", "cra78", True)
-    contacto4 = Contact("Javier N", "javi", 591, 123456, "javi@mail.com", "cra78", True)
-    contacto5 = Contact("Marcela A", "marce", 52, 123456, "marce@mail.com", "cra78", True)
-
-    FAMILIA.add_contact_group(contacto1)
-    FAMILIA.add_contact_group(contacto2)
-    AMIGOS.add_contact_group(contacto1)
-    AMIGOS.add_contact_group(contacto5)
-    TRABAJO.add_contact_group(contacto3)
-
-    print(FAMILIA.conver_group())
-    print(AMIGOS.conver_group())
-    print(TRABAJO.conver_group())
-
-    FAMILIA.remove_contact_group(2)
-    print(FAMILIA.conver_group())
 

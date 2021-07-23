@@ -2,24 +2,36 @@ import pytest
 
 from Agenda import Agenda
 
-def test_agenda():
-    agenda_x = Agenda()
-    agenda_x.add_contact(1)
-    a = agenda_x.find_contact(1)
-    assert 1 == a
+@pytest.fixture
+def clase():
+    clase = Agenda()
+    contact = {
+        "id": 1,
+        "name": "selena",
+        "nickname": "selena32",
+        "group": "trabajo"
+    }
+    clase.add_contact(contact)
+    return clase
 
+def test_agenda_find(clase):
+    x = clase.find_contact('1')
+    assert x == clase.contactos[0]
+
+def test_agenda_remove(clase):
+    b = clase.delete_contact('1')
+    assert b == clase.contactos 
+
+"""
 def test_agenda_find():
-    agenda = Agenda()
+    agenda_x = Agenda()
     contact = {
         "name": "selena",
         "nickname": "selena32",
         "group": "trabajo"
     }
-    agenda.add_contact(contact)
-    x = agenda.find_contact('1')
-    assert x == contact
-    
-
-def test_equals_2():
-    assert 3 == 3
+    agenda_x.add_contact(contact)
+    a = agenda_x.find_contact(1)
+    assert a == contact
+"""
     

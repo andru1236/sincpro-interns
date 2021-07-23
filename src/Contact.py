@@ -47,12 +47,12 @@ class Contact:
         self.preferred = preferred
 
     def __str__(self):
-        f"""Contacto:
+        return f"""Contacto:
         idContacto={self.contactId},
         nombre={self.name},
         apodo={self.nickname},
-        telefono={self.contactInfo[0]},
-        email={self.contactInfo[1]},
+        codigo={self.contactInfo[0]},
+        telefono={self.contactInfo[1]},
         email={self.contactInfo[2]},
         direccion={self.contactInfo[3]},
         preferido={self.preferred}

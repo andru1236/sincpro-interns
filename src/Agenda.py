@@ -10,7 +10,7 @@ class Agenda:
 			delete_contact = [contact for contact in self.contactos if contact['id'] == int(id)]
 			if len(delete_contact) > 0:
 				self.contactos.remove(delete_contact[0])
-				return delete_contact
+				return self.contactos
 			return {"messaje": "Contact not found"}
 
 	def find_contact(self, a):

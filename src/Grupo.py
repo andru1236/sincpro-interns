@@ -2,7 +2,7 @@ from Contact import Contact
 
 
 class Grupo:
-
+    
     def __init__(self, group_name):
         self.__group_name = group_name
         self.__lista = []
@@ -38,3 +38,10 @@ class Grupo:
 
     def conver_group(self):
         return {"list": self.__lista}
+
+    def return_list(self):
+        return self.__lista
+
+
+
+
